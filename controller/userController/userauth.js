@@ -4,7 +4,7 @@ const { ErrorHandler } = require("../../middleware/errorHandler");
 const { StatusCodes } = require("http-status-codes");
 const nodemailer = require("nodemailer");
 
- //node mailer
+//node mailer
 const transpoter = nodemailer.createTransport({
   service: "gmail",
   secure: true,
@@ -30,8 +30,8 @@ exports.postUserSignUp = async (req, res, next) => {
       return next(
         new ErrorHandler("Email Already exist", StatusCodes.UNAUTHORIZED)
       );
-      }
-      //node mailer
+    }
+    //node mailer
     await transpoter.sendMail({
       from: "darshanchovatiya30@gmail.com",
       to: email,
@@ -39,7 +39,7 @@ exports.postUserSignUp = async (req, res, next) => {
       text: "welcome to signup",
       html: `
                 <h1>welcome ${username}</h1>
-                <img src="https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg" width="200px" height="200px"/>
+                <img src="https://cdn.slidesharecdn.com/ss_thumbnails/mycreditseminar-160609031754-thumbnail.jpg?width=640&height=640&fit=bounds" width="200px" height="200px"/>
                 `,
     });
     const hasspasword = await bcrypt.hash(password, 10);
